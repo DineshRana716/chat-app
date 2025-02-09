@@ -34,6 +34,7 @@
   display: flex;
 }
 .search-box {
+
   outline-width: 0;
   border: none;
   margin-left: 10px;
@@ -119,10 +120,12 @@
   gap: 5px;
 }
 .text-input-area {
+  background-color: #ba9797;
   outline-width: 0;
   border: none;
   margin-left: 10px;
   font-size: 1rem;
+  
 }
 .received-message{
  font-size: 20px;

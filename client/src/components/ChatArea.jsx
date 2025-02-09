@@ -1,6 +1,8 @@
 import React from "react";
 import "./Mystyle.css";
 import ConversationsItem from "./ConversationsItem";
+import SendIcon from '@mui/icons-material/Send';
+import { IconButton } from "@mui/material";
 
 const Chatarea = () => {
   const userdata = {
@@ -44,13 +46,15 @@ const Chatarea = () => {
           <p className="message bg-green-200 rounded-lg">Im ok ok ok fine. Thank You </p>
         </div>
       </div>
-      <div className="text-input-area">
+      <div className="flex w-full gap-2">
         <input
           type="text"
           placeholder="type message here"
-          className="search-box"
-        />
-        <button>send</button>
+          className="flex-1 p-2  rounded-md"
+          />
+          <IconButton>
+            <SendIcon/>
+            </IconButton>
       </div>
     </div>
   );
