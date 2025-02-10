@@ -11,16 +11,15 @@ require("dotenv").config();
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
-  cors: { origin: "http://localhost:5173" }, // React frontend
+  cors: { origin: "http://localhost:5173", methods: ["GET", "POST"] }, 
 });
 
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect("mongodb://127.0.0.1:27017/chatApp", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose
+  .connect("mongodb://127.0.0.1:27017/chatApp")
+  .then(console.log("database connected"));
 
 // Store connected users
 let onlineUsers = {};
@@ -48,7 +47,6 @@ const users = [
   { username: "devansh", password: bcrypt.hashSync("pass123", 10) },
   { username: "prakhar", password: bcrypt.hashSync("pass123", 10) },
 ];
-
 // API to Login
 app.post("/login", async (req, res) => {
   const { username, password } = req.body;
@@ -67,6 +65,7 @@ io.on("connection", (socket) => {
   socket.on("userConnected", (username) => {
     onlineUsers[username] = socket.id;
     console.log(`${username} is online`);
+    io.emit("onlineUsers", Object.keys(onlineUsers));
   });
 
   socket.on("sendMessage", async (data) => {

@@ -8,10 +8,10 @@ const ConversationsItem = ({ props ,newstyle}) => {
       </div>
       <div className="col-right">
         <p className="con-title">{props.name}</p>
-        <div className="row-last">
+        {/* <div className="row-last">
           <p className="con-lastMessage">{props.lastMessage}</p>
           <p className="con-timeStamp">{props.timeStamp}</p>
-        </div>
+        </div> */}
       </div>
     </div>
   );

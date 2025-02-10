@@ -56,6 +56,7 @@
   justify-content: space-between;
 }
 .sb-conversations {
+  cursor: pointer;
   background-color: white;
   padding: 5px 10px;
   border-radius: 20px;
@@ -120,12 +121,10 @@
   gap: 5px;
 }
 .text-input-area {
-  background-color: #ba9797;
   outline-width: 0;
   border: none;
   margin-left: 10px;
   font-size: 1rem;
-  
 }
 .received-message{
  font-size: 20px;

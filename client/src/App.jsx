@@ -1,14 +1,20 @@
 import React from 'react'
-import Sidebar from './components/Sidebar'
+import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Maincontainer from './components/Maincontainer'
+import Login from './components/Login'
 
 const App = () => {
-    // const [user, setUser] = useState(localStorage.getItem("user"));
-  //<div>{user ? <Chat user={user} /> : <Login setUser={setUser} />}</div>;
+  const [user, setUser] = useState(localStorage.getItem("user"));
   return (
-    <div>
-      <Maincontainer/>
-    </div>
+<Router>
+      <Routes>
+        <Route
+          path="/"
+          element={user ? <Maincontainer user={user} /> : <Login setUser={setUser} />}
+        />
+      </Routes>
+    </Router>
   )
 }
 

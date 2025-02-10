@@ -1,9 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom"; // ✅ Correct import
 
-const Login = ({ setUser }) => {
+const Login = ({setUser}) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate(); // ✅ Use this instead of Navigate()
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -15,8 +17,9 @@ const Login = ({ setUser }) => {
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", res.data.username);
       setUser(res.data.username);
+      navigate("/"); 
     } catch (err) {
-      alert("Invalid credentials");
+      alert("Invalid credentials from client side");
     }
   };
 
@@ -33,12 +36,12 @@ const Login = ({ setUser }) => {
         />
         <input
           type="password"
-          placeholder="Password"
+          placeholder="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit">Login</button>
+        <button className="bg-blue-200" type="submit">Login</button>
       </form>
     </div>
   );
